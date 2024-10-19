@@ -1,0 +1,30 @@
+output_dir: train_outputs
+name: anyline_circlesfill
+log_with: tensorboard
+resume_from_checkpoint: true
+dataset:
+  name: wallpaper-dataste/images
+  params:
+    resolution: [512, 512]
+model:
+  pretrained_model_name_or_path: Alpha-VLLM/Lumina-Next-SFT-diffusers
+  adapter:
+    num_layers: 6
+    rank: 256
+train:
+  seed: 0
+  batch_size: 2
+  train_steps: 100
+  lr: 1e-5
+  num_warmup_steps: 0
+  mixed_precision: fp32
+  gradient_accumulation_steps: 1
+  num_workers: 4
+  max_grad_norm: 1.0
+  log_every: 1
+  checkpoint_every: 1
+  validate_every: 1
+  max_checkpoints: 2
+  num_train_validation: 1
+hydra:
+  output_subdir: null
