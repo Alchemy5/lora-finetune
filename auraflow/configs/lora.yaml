@@ -1,0 +1,32 @@
+output_dir: outputs
+name: lora_style
+log_with: 
+resume_from_checkpoint: false
+dataset:
+  path: to_be_decided
+  params:
+    resolution: [768, 768]
+model:
+  pretrained_model_name_or_path: fal/AuraFlow-v0.3
+train:
+  seed: 0
+  batch_size: 1
+  train_steps: 1600
+  lr: 1e-5
+  num_warmup_steps: 50
+  mixed_precision: fp16
+  gradient_accumulation_steps: 2
+  timestep_sampling: uniform | cubic | sigmoid
+  num_workers: 4
+  max_grad_norm: 1.0
+  log_every: 1
+  checkpoint_every: 250
+  validate_every: 50
+  max_checkpoints: 1
+  num_train_validation: 10
+  gradient_checkpointing: true
+huggingface:
+  push_to_hub: false
+  repo_id: null
+hydra:
+  output_subdir: null
