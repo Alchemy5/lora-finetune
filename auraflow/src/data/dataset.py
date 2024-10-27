@@ -3,7 +3,7 @@ from PIL import Image
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-class TrainDataset(Dataset):
+class StyleDataset(Dataset):
     def __init__(self, base_dir, transform=None):
         self.base_dir = base_dir
         self.image_paths = []
