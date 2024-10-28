@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "auraflow"
+version = "0.1.0"
+description = ""
+authors = ["Varun"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+accelerate = "^1.0.1"
+torch = "^2.5.0"
+transformers = "^4.46.0"
+omegaconf = "^2.3.0"
+diffusers = "^0.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
