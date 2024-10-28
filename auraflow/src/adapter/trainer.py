@@ -1,4 +1,3 @@
-import pdb;pdb.set_trace()
 from accelerate import Accelerator, DistributedDataParallelKwargs
 from accelerate.utils import ProjectConfiguration, set_seed
 from omegaconf import DictConfig
@@ -6,11 +5,11 @@ import torch
 import os
 import logging
 from transformers import BitsAndBytesConfig
-from ..auraflow.auraflow import AuraFlowTransformer2DModel
+from src.auraflow.auraflow import AuraFlowTransformer2DModel
 from transformers import AutoTokenizer, UMT5EncoderModel
 from diffusers import AutoencoderKL
-from model import LoRAAttention, LoRA
-from ..data.dataset import StyleDataset
+from src.adapter.model import LoRAAttention, LoRA
+from src.data.dataset import StyleDataset
 from torch.utils.data import DataLoader, Dataset
 import accelerate
 import tqdm
@@ -285,7 +284,7 @@ def train_adapter(cfg: DictConfig):
         gradient_accumulation_steps=cfg.train.gradient_accumulation_steps,
         kwargs_handlers=[DistributedDataParallelKwargs(find_unused_parameters=True)],
         project_config=project_config,
-        log_with=cfg.log_with,
+        #log_with=cfg.log_with,
     )
 
     set_seed(cfg.train.seed)
@@ -293,7 +292,7 @@ def train_adapter(cfg: DictConfig):
 
     logging.info("Loading Models")
     models = load_models(cfg, weight_dtype, accelerator.device)
-
+    
     transformer, text_encoder, tokenizer, vae = (
         models["transformer"],
         models["text_encoder"],
@@ -317,7 +316,7 @@ def train_adapter(cfg: DictConfig):
     transformer.train()
     vae.eval()
     text_encoder.eval()
-
+    import pdb;pdb.set_trace()
     # enable gradient checkpointing
     if cfg.train.gradient_checkpointing:
         transformer.enable_gradient_checkpointing()

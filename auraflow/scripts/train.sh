@@ -1,2 +1,2 @@
 #!/bin/bash
-accelerate launch train.py --config-name=lora
+accelerate launch scripts/train.py --config-name=lora

@@ -1,0 +1,6 @@
+[2024-10-28 02:29:00,243][root][INFO] - Loading Models
+[2024-10-28 02:29:00,395][root][INFO] - Loading Models
+[2024-10-28 02:29:15,745][root][INFO] - Loaded Transformer, Text Encoder, Tokenizer, and VAE
+[2024-10-28 02:29:15,745][root][INFO] - Loaded DiT, VAE, Text Encoder, and Tokenizer
+[2024-10-28 02:29:15,775][root][INFO] - Loaded Transformer, Text Encoder, Tokenizer, and VAE
+[2024-10-28 02:29:15,775][root][INFO] - Loaded DiT, VAE, Text Encoder, and Tokenizer
